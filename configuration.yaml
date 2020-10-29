@@ -8,8 +8,8 @@ frontend:
   themes: !include_dir_merge_named themes
 
 http:
-    use_x_forwarded_for: true
-    trusted_proxies:
+    use_x_forwarded_for: true                        #Config for passing through the IP address of a host when the connection is coming thru reverse proxy
+    trusted_proxies:                                 
       - 172.30.32.0/23                               #?Container? network
       - 127.0.0.1                                    #Localhost
       - 192.168.1.10                                 #The IP address of my Home Assistant
@@ -17,13 +17,13 @@ http:
     cors_allowed_origins:
       - https://google.com
       - https://www.home-assistant.io
-      #- https://##MYHOMEASSISTANTURL##
+      #- https://##MYHOMEASSISTANTURL##             #Commented out so you can enter your correct HA domain and uncomment it
 
 zone:
   - name: Home
-    latitude: 100
-    longitude: 100
-    radius: 125
+    latitude: 100                                   #Not my real zone
+    longitude: 100                                  #
+    radius: 125                                     #Larger than stock Home zone was a good solution to presense detection not working fast enough / reliable enough
     icon: mdi:account-multiple
 
 ##################################
@@ -90,5 +90,5 @@ speedtestdotnet:
   manual: true
 
 spotify:
-  client_id: !secret spot_cid
-  client_secret: !secret spot_sec
+  client_id: !secret spotify_id
+  client_secret: !secret spotify_secret
