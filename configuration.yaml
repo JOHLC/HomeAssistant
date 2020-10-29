@@ -1,0 +1,94 @@
+##################################
+#         Home Assistant         #
+##################################
+#default_config:
+cloud:
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+http:
+    use_x_forwarded_for: true
+    trusted_proxies:
+      - 172.30.32.0/23                               #?Container? network
+      - 127.0.0.1                                    #Localhost
+      - 192.168.1.10                                 #The IP address of my Home Assistant
+
+    cors_allowed_origins:
+      - https://google.com
+      - https://www.home-assistant.io
+      #- https://##MYHOMEASSISTANTURL##
+
+zone:
+  - name: Home
+    latitude: 100
+    longitude: 100
+    radius: 125
+    icon: mdi:account-multiple
+
+##################################
+#     plugins / integrations     #
+##################################
+system_health:
+sun:
+wake_on_lan:
+map:
+updater:
+logbook:
+ssdp:
+
+input_select:
+input_datetime:
+input_text:
+input_number:
+input_boolean:
+
+api:
+zeroconf:
+stream:
+media_player:
+media_source:
+device_tracker:
+  - platform: bluetooth_tracker  
+
+  
+#################
+#    includes   #
+#################
+####Files####
+homeassistant:
+  customize: !include customize.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+group: !include config/groups.yaml
+scene: !include config/scenes.yaml
+tplink: !include config/tplink.yaml
+recorder: !include config/recorder.yaml
+history: !include config/history.yaml
+timer: !include config/timers.yaml
+alarm_control_panel: !include config/alarms.yaml
+google_assistant: !include config/google_assistant.yaml
+logger: !include config/logger.yaml
+rest_command: !include config/rest_command.yaml
+notify: !include config/notify.yaml
+tts: !include config/tts.yaml
+camera: !include config/cameras.yaml
+
+#shell_command: !include config/shell.yaml
+#alert: !include config/alert.yaml
+#media_player: !include config/media_player.yaml
+
+####DIRs####
+switch: !include_dir_merge_list config/switches/
+sensor: !include_dir_merge_list config/sensors/sensors/
+binary_sensor: !include_dir_merge_list config/sensors/binary_sensors/
+
+####################################
+#      Additional integrations     #
+####################################
+speedtestdotnet:
+  manual: true
+
+spotify:
+  client_id: !secret spot_cid
+  client_secret: !secret spot_sec
