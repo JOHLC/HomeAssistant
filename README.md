@@ -13,4 +13,4 @@ I have been working on this since April 2020
 
 ### Security
 #### Alarm System
-<img src="https://raw.githubusercontent.com/JOHLC/HomeAssistant/main/lovelace/images/alarmsystem.png" alt="Alarm System" width="1000">
+<img src="https://raw.githubusercontent.com/JOHLC/HomeAssistant/main/lovelace/images/alarmsystem.png" alt="Alarm System" width="100%">
