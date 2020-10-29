@@ -1,4 +1,5 @@
 # Home Assistant Config 
+[![HitCount](http://hits.dwyl.com/johlc/HomeAssistant.svg)](http://hits.dwyl.com/johlc/HomeAssistant)<br />
 This is my Home Assistant config,
 I have been working on this since April 2020
 
