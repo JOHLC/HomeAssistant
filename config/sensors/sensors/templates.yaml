@@ -1,0 +1,50 @@
+############################################
+#              Count entities              #
+############################################
+      count_automations:
+        value_template: "{{ states.automation | length }}"
+        unique_id: automationscounted
+    #----- Count Scripts
+      count_scripts:
+        value_template: "{{ states.script| length }}"
+        unique_id: scriptscounted
+    #----- Count Device Trackers
+      count_device_trackers:
+        value_template: "{{ states.device_tracker | length }}"
+        unique_id: devicetrackerscounted
+    #----- Count Binary Sensors
+      count_binary_sensors:
+        value_template: "{{ states.binary_sensor| length }}"
+        unique_id: binarysensorscounted
+    #----- Count Sensors
+      count_sensors:
+        value_template: "{{ states.sensor | length }}"
+        unique_id: sensorscounted
+    #----- Count Switches
+      count_switches:
+        value_template: "{{ states.switch | length }}"
+        unique_id: switchescounted
+    #----- Count Zones
+      count_zones:
+        value_template: "{{ states.zone | length }}"
+        unique_id: zonescounted
+    #----- Input Booleans
+      count_input_booleans:
+        value_template: "{{ states.input_boolean | length }}"
+        unique_id: inputboolscounted
+    #----- Input Numbers
+      count_input_numbers:
+        value_template: "{{ states.input_number | length }}"
+        unique_id: inputnumberscounted
+    #----- Input Texts
+      count_input_texts:
+        value_template: "{{ states.input_text | length }}"
+        unique_id: inputtexstscounted
+    #----- Input Selects
+      count_input_selects:
+        value_template: "{{ states.input_select | length }}"
+        unique_id: inputselectscounted
+    #----- Input Date Times
+      count_input_datetimes:
+        value_template: "{{ states.input_datetime | length }}"
+        unique_id: inputdatetimescounted
