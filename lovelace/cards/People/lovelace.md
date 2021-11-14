@@ -1,6 +1,7 @@
 ![image](https://user-images.githubusercontent.com/63735432/141701685-c8fa79bb-9693-4324-9801-71ab41172d07.png)
 
 ```
+# Manual card
 type: custom:stack-in-card
 title: ''
 mode: vertical
