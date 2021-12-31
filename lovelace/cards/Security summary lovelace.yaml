@@ -1,0 +1,40 @@
+type: markdown
+
+content: >-
+  {% macro secsummary() -%}  <center> {% set doors = expand(
+              'binary_sensor.front_kitchen_window', 
+              'binary_sensor.side_kitchen_window', 
+              'binary_sensor.wyzesense_br_back_window', 
+              'binary_sensor.wyzesense_br_window_side', 
+              'binary_sensor.wyzesense_cat_window_left', 
+              'binary_sensor.wyzesense_cat_window_right', 
+              'binary_sensor.wyzesense_lr_window', 
+              'binary_sensor.wyzesense_lr_window_left', 
+              'binary_sensor.wyzesense_studio_window_left', 
+              'binary_sensor.wyzesense_studio_window_right'
+              ) | selectattr('state', 'eq', 'on') | map(attribute='name') | list %}{% set qty = doors | count %}{% set p1 = 'are' if qty > 1 else 'is' %}{% if qty == 0 %}Windows: ✅{% else %}Windows: {{' and '.join((doors | join(', ')).rsplit(', ', 1)) |  capitalize  }} {{p1}} open{% endif %}{% set doors = expand(
+              'binary_sensor.front_door', 
+              'binary_sensor.back_door', 
+              'binary_sensor.side_door', 
+              'binary_sensor.front_door',
+              'binary_sensor.wyzesense_basement_door'
+              ) | selectattr('state', 'eq', 'on') | map(attribute='name') | list %}
+  </center><center> {% set qty = doors | count %} {% set p1 = 'are' if qty > 1
+  else 'is' %} {%  if qty == 0 %}Doors: ✅ {% else %}Doors: {{' and '.join((doors
+  | join(', ')).rsplit(', ', 1)) | capitalize  }} {{p1}} open{% endif %}
+  </center> {% set doors = expand(
+              'binary_sensor.cat_room_motion', 
+              'binary_sensor.front_doorbell_motion', 
+              'binary_sensor.hall_motion_detector', 
+              'binary_sensor.living_room_motion_detector', 
+              'binary_sensor.wyzesense_bedroom_motion', 
+              'binary_sensor.wyzesense_studio_motion'
+               ) | selectattr('state', 'eq', 'on') | map(attribute='name') | list %}
+  {% set qty = doors | count %} {% set p1 = ' Motion: ' if qty > 1 else '
+  Motion: ' %}
+  <center>
+  {% if qty == 0 %}Motion: ✅ {% else %} {{p1}}{{'and '.join((doors | join(',
+  ')).rsplit(', ', 1)) | capitalize }} {% endif%} {%- endmacro %}
+  </center>
+
+  {{secsummary() | replace(" window", "")}}
