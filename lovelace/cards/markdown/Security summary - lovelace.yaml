@@ -1,5 +1,4 @@
 type: markdown
-
 content: >-
   {% macro secsummary() -%}  <center> {% set doors = expand(
               'binary_sensor.front_kitchen_window', 
